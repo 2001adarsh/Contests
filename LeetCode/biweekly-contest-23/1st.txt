@@ -1,0 +1,29 @@
+class Solution {
+public:
+     int getSum(int n) 
+    { 
+        int sum; 
+        for (sum = 0; n > 0; sum += n % 10, n /= 10); 
+        return sum; 
+    } 
+    
+    int countLargestGroup(int n) {
+        map<int,int> mp;
+        
+        for(int i=1; i<=n; i++){
+            int x = getSum(i);
+            mp[x] +=1;
+        }
+        
+        int mx = 0;
+        for(auto a: mp)
+            mx = max(mx, a.second);
+        
+        int ans=0;
+        for(auto a : mp)
+            if(a.second == mx)
+                ans++;
+        
+        return ans;
+    }
+};
