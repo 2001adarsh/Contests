@@ -1,0 +1,24 @@
+class Solution {
+public:
+    
+    vector<int> minSubsequence(vector<int>& nums) {
+        
+        int x = accumulate(nums.begin(), nums.end(), 0);
+       
+        vector<int> ans;
+        
+        sort(nums.begin(), nums.end(), greater<int>() );
+        
+        int cur =0;
+        for(auto a: nums)
+        {
+            if(cur <= x){
+                cur +=a;
+                ans.push_back(a);
+                x -= a;
+            }
+        }
+        //cout<<cur;
+        return ans;
+    }
+};
