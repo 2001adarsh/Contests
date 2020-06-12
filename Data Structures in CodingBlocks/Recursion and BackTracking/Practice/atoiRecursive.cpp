@@ -53,12 +53,12 @@ int main()
 	st.pb('a');
 
 	permute(st, 3, "");
-	for (auto a : v)
-		cout << a << endl;
+	for (set<string>::iterator a : v)
+		cout << *a << endl;
 
     //conversion of string to integer using recursion.
     cout<<atoi("234")<<endl;
-    
+
 	 cout<<"\nExecution time : "<<tick()<<"\n";
 	return 0;
 }
