@@ -15,7 +15,7 @@ int main() {
         ll ans = 0;
 
         for(ll i =1; i<=segments; i++){
-            ll denom = 1ll;
+            ll denom = 1;
             ll setBits = __builtin_popcount(i);
 
             for(ll j=0; j<=7; j++){  //we are excluding 000000, since we want atlest 1 prime number to be there to divide n.
@@ -30,5 +30,5 @@ int main() {
             }
         }
         cout<<ans<<endl;
-    }    
+    }
 }
