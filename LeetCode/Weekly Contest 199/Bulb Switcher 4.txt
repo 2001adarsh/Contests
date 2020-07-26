@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int minFlips(string target) {
+        
+        string targets ="";
+        targets += target[0];
+        int x = 0;
+        
+        for(int i=1; i<target.size(); i++){
+            if(target[i] != targets[x]){
+                x++;
+                //cout<<target[i];
+                targets += target[i];
+            }
+            else{
+                
+            }
+        }
+        
+      //  cout<<targets<<endl;
+        
+        int ans  = targets.size();
+        if(targets[0] == '0')
+            return ans-1;
+        else 
+            return ans;
+    }
+};
