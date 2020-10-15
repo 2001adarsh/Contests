@@ -1,0 +1,16 @@
+//Dynamic Programming.
+Those who can't remember the their past are condemned to repeat it.
+
+1. Optimal Substructure -> Divide the problem into smaller instances of same type.
+2. Overlapping Subproblems -> subproblems repeating many times, so solving once can
+                            solve for various others.
+
+
+Memoization -> Stores already computed values in table(Memoization means caching).
+Recursion -> solves sub problems recursively 
+
+Dynamic Programming = Recursion + Memoization
+
+Bottom Up Approach for some cases, where a tree is forming. It might
+have to solved diagonally in a 2D matrix in such a way that, both the 
+childs have to be calculated before touching the parent node.
