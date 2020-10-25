@@ -38,30 +38,18 @@ void numberOfWays(int n) {
     cout << "The total number of ways are: " << dp[n - 1][W] << endl;
 }
 
-void minCoins(int n, int coins[]) {
-    int dp1[100][100];
-    memset(dp1, 0, sizeof dp1);
-
+void minCoins(int arr[], int n) {
+    int dp[10000] = {0};
     for (int i = 1; i <= W; i++) {
-        if (i % coins[0] == 0)
-            dp1[0][i] = 1 + dp1[0][i - coins[0]];
-    }
-
-    for (int i = 1; i < n; i++) {
-        for (int j = 1; j <= W; j++) {
-            if (j < coins[i])
-                dp1[i][j] = dp1[i - 1][j];
-            else
-                dp1[i][j] = min(dp1[i - 1][j] , 1 + dp1[i][j - coins[i]]);
+        dp[i] = INT_MAX;
+        for (int j = 0; j < n; j++) {
+            if (i - arr[j] >= 0) {
+                dp[i] = min(dp[i - arr[j]], dp[i]);
+            }
         }
+        dp[i] += 1;
     }
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j <= W; j++)
-            cout << dp1[i][j] << " ";
-        cout << endl;
-    }
-    cout << "The min number of coins required are: " << dp1[n - 1][W];
+    return dp[W];
 }
 
 int32_t main()
@@ -80,6 +68,6 @@ int32_t main()
     cin >> W;
 
     numberOfWays(n);
-    // minCoins(n, arr);
+    minCoins(arr, n);
     return 0;
 }
