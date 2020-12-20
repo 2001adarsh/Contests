@@ -12,7 +12,7 @@ bitset<100> will take 100 bits memory only, so better than bool prime[].
 which, on most systems, is eight times less than the smallest elemental type: char)
 For safety, dont increase range more than 10e7
 */
-const int N = 10e7;
+const int N = 1e7; //have tried 1e8 also, it works.
 bitset<N> pr; // array containing numbers from 1...n
 
 vector<int> primes; // to store all the primes numbers.
