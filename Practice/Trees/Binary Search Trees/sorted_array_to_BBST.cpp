@@ -10,12 +10,6 @@ public:
     int data;
     Node *left , *right;
 };
-Node *newNode(int data) {
-    Node *node = new Node();
-    node->data = data;
-    node->left = node->right = NULL;
-    return node;
-}
 
 Node* buildBST(int *arr, int s, int e) {
     if (s > e)

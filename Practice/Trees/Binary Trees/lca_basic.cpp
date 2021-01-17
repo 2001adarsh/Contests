@@ -3,7 +3,7 @@ using namespace std;
 #define int long long int
 #define endl    "\n"
 
-//Mirror Image
+//LCA
 
 class Node
 {
