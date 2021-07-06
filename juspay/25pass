@@ -1,0 +1,94 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long int
+#define endl    "\n"
+#define mod 1000000007
+#define inf 1e18
+
+unordered_map<int, set<int>> gr;
+unordered_map<int, int> neigh, vis;
+
+void dfs(int node, int tar) {
+    if (node == tar)
+        return;
+    vis[node] = 1;
+    if (neigh.count(node))
+        neigh[node] = 2;
+    
+    for (auto nbr : gr[node]) {
+        if (!vis[nbr])
+            dfs(nbr, tar);
+    }
+}
+
+int32_t main()
+{   ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int n;
+    cin >> n;
+    map< int,int> rev;
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        rev[i] = x;
+    }
+
+    int m;
+    cin >> m;
+    vector<pair<int, int>> vec;
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+        vec.push_back({u, v});
+        gr[u].insert(v);
+        // gr[v].push_back(u); //.cad
+    }
+
+    int src, tar;
+    cin >> src >> tar;
+
+    for(auto itr: gr){
+        if(itr.second.find(tar) != itr.second.end())
+            neigh[itr.first] = 1;
+    }
+
+    dfs(src, tar);
+
+    bool found = false;
+    for(int i=0; i<m; i++){
+        if(vec[i].second == tar){
+            if(neigh[vec[i].first] == 2){
+                cout<<vec[i].first<<" ";
+                found = true;
+            }
+        }
+    }
+    if(found == false)
+    cout<<-1;
+
+    // bool fla = false;
+    // for(auto itr : rev){
+    //     if(neigh[itr.second] == 2){
+    //         cout<<itr.second<<" ";
+    //         fla = true;
+    //     }
+    // }
+    // if(fla == false)
+    //     cout<<-1;
+
+    // set<int> st;
+    // for(auto itr : neigh){
+    //     if(itr.second == 2)
+    //         st.insert(itr.first);
+    // }
+    // if(st.empty()){
+    //     cout<<-1;
+    // }else{
+    //     for(auto i: st)
+    //     cout<<i<<" ";
+    // }
+    
+
+    return 0;
+}
