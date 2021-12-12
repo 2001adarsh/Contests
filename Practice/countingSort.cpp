@@ -15,6 +15,7 @@ int32_t main()
 #endif
 
 
+
     int arr[] = {1, 2, 3, 3, 1, 2, 1};
     int n = sizeof(arr) / sizeof(int);
 
